@@ -12,8 +12,7 @@ window.addEventListener("load", () => {
           
           div.appendChild(createElementWithContent('h2', data.league.name));
           div.appendChild(createElementWithContent('h3', "GAMEWEEK RESULTS"));
-          .appendChild(createListWithContent('tr', data.standings.results, 'entry_name');
-          div.appendChild(createListWithContent('table', data.standings.results, 'entry_name'));
+          div.appendChild(createListWithContent('ol', data.standings.results));
           document.getElementById('app').replaceChildren(div);
       });    
         
@@ -25,10 +24,15 @@ window.addEventListener("load", () => {
   
       function createListWithContent(type, list) {                                                  
           const el = document.createElement(type);
-          list.forEach(item => el.appendChild(createElementWithContent('li', item['entry_name'] + " " + 
-          item['event_total']))).;
+          const sortedList = list.sort(compareGameweekScores)
+          sortedList.forEach(item => el.appendChild(createElementWithContent('li', item['entry_name'] + " | " + 
+          item['event_total'])));
           return el;
       }
+
+      function compareGameweekScores(a, b) {
+        return b.event_total - a.event_total;
+      }    
 });
 
 
