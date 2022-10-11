@@ -4,22 +4,44 @@
 <head>
     <title>Family Values SA</title>
     <link
-        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
-        rel="icon" type="image/x-icon" />
+            href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
+            rel="icon" type="image/x-icon" />
 </head>
 
 <body>
-    <h1>FAMILY VALUES PREMIER LEAGUE FANTASY RESULTS</h1>
+<h1>FAMILY VALUES PREMIER LEAGUE FANTASY RESULTS</h1>
 
-    <div id="gameweek">
-        And the app will dynamically change this content.
-    </div>
+<div id="app">
+    And the app will dynamically change this content.
+</div>
 
-    <div id="overall">
-        Swavey the mixtape
-    </div>
-
-    <script type="text/javascript" src="/js/spa-fpl.js"></script>
+<script id="template" type="text/handlebars-template">
+    <table>
+        <thead>
+        <td><strong>GAMEWEEK RESULTS</strong></td>
+        </thead>
+        {{#each gameWeek}}
+        <tr>
+            <td>{{this.playerName}}</td>
+            <td>{{this.playerScore}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    <br>
+    <table>
+        <thead>
+        <td><strong>OVERALL RESULTS</strong></td>
+        </thead>
+        {{#each overall}}
+        <tr>
+            <td>{{this.playerName}}</td>
+            <td>{{this.playerScore}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+<script type="text/javascript" src="/js/spa-fpl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </body>
 
 </html>
