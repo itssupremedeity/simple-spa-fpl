@@ -21,3 +21,4 @@ Its purely HTML,CSS and JavaScript...
 
 
 For server side python3 to start the http rendering to test the web app
+($ python3 -m http.server ./simple-spa-fpl 5050)
