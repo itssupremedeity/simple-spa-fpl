@@ -4,44 +4,83 @@
 <head>
     <title>Family Values SA</title>
     <link
-            href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
-            rel="icon" type="image/x-icon" />
+        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAOjv4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEBEAAAAAEBAAABAQAAAQEREREBAAABEREREREAAAARAREBEAAAAAEREREAAAAAABAAEAAAAAAAEAAQAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAPyfAADr6wAA6AsAAOADAADyJwAA+A8AAP3fAAD93wAA++8AAP//AAD//wAA"
+        rel="icon" type="image/x-icon" />
 </head>
 
 <body>
-<h1>FAMILY VALUES PREMIER LEAGUE FANTASY RESULTS</h1>
+    <h1>PREMIER LEAGUE FANTASY RESULTS</h1>
 
-<div id="app">
-    And the app will dynamically change this content.
-</div>
+    <div id="app"></div>
 
-<script id="template" type="text/handlebars-template">
-    <table>
-        <thead>
-        <td><strong>GAMEWEEK RESULTS</strong></td>
-        </thead>
-        {{#each gameWeek}}
-        <tr>
-            <td>{{this.playerName}}</td>
-            <td>{{this.playerScore}}</td>
-        </tr>
-        {{/each}}
-    </table>
     <br>
-    <table>
-        <thead>
-        <td><strong>OVERALL RESULTS</strong></td>
-        </thead>
-        {{#each overall}}
-        <tr>
-            <td>{{this.playerName}}</td>
-            <td>{{this.playerScore}}</td>
-        </tr>
-        {{/each}}
-    </table>
-</script>
-<script type="text/javascript" src="/js/spa-fpl.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+    <script id="defaultTemplate" type="text/handlebars-template">
+        <form id="leagueID">
+            <label for="html">Enter League ID</label><br>
+            <input name="id" id="html" type="number" min="0" step="1"/><br>
+            <input name="submit" type="submit"/>
+        </form>
+        <br/>
+    </script>
+
+    <script id="playerTemplate" type="text/handlebars-template">
+        <table>
+            <thead>
+                <td><strong>{{playerName}}</strong></td>
+            </thead>
+            <tr>
+                <td>GameWeek Points</td>
+                <td>{{gameWeekPoints}}</td>
+            </tr>
+            <tr>
+                <td>Overall Points</td>
+                <td>{{overallPoints}}</td>
+            </tr>
+            <tr>
+                <td>Overall Rank</td>
+                <td>{{overallRank}}</td>
+            </tr>
+            <tr>
+                <td>Points On Bench</td>
+                <td>{{pointsOnBench}}</td>
+            </tr>
+        </table>
+        <br>
+    </script>
+
+    <script id="leagueTemplate" type="text/handlebars-template">
+        <table>
+            <thead>
+            <td><strong>GAMEWEEK RESULTS</strong></td>
+            </thead>
+            {{#each gameWeek}}
+            <tr>
+                <td><a href="#playerData">{{this.playerName}}</a></td>
+                <td>{{this.playerScore}}</td>
+                <p id="playerID" hidden>{{this.playerID}}.</p>
+                <p id="playerName" hidden>{{this.playerName}}.</p>
+            </tr>
+            {{/each}}
+        </table>
+        <br>
+        <table>
+            <thead>
+            <td><strong>OVERALL RESULTS</strong></td>
+            </thead>
+            {{#each overall}}
+            <tr>
+                <td><a href="#/player-data">{{this.playerName}}</a></td>
+                <td>{{this.playerScore}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </script>
+
+    <script type="text/javascript" src="/js/new.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-router@1.2.8/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 </body>
 
 </html>
